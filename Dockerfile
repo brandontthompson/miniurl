@@ -1,12 +1,12 @@
 FROM node:latest
 LABEL name="uwaa.moe"
-LABEL version="1.0"
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && \
+    npm install -g npm@7.20.6
 
 COPY . .
 

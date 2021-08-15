@@ -1,9 +1,0 @@
-FROM mongo:latest
-LABEL name="mongodb"
-LABEL version="1.0"
-
-EXPOSE 27017
-
-ADD /app/database /data/db
-
-#docker build . -p 27017:27017
