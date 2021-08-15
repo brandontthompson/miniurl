@@ -1,3 +1,4 @@
+require('dotenv').config();
 (() => {
-    require('./src/server')(process.argv.slice(2));
+    require('./src/server').start(process.argv.slice(2));
 })();

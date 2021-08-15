@@ -1,0 +1,6 @@
+FROM mongo:latest
+LABEL version="1.0"
+EXPOSE 27017
+# RUN
+
+#docker run --name miniurl -v ~/Documents/Environment/Development/miniurl/development/database:/data/db -p 27017:27017 -d mongo:latest

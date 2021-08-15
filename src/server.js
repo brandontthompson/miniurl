@@ -1,14 +1,19 @@
+// Require the config (since this is run by dotenv it will do all of the set up and we dont have to save it to a var)
+require('./config');
 const express = require('express');
 const app = express();
 const https = require('http').createServer(app);
-// Load middlewares
+const database = require('./database');
 
-require('./middleware')(app);
-app.use('/api', require('./router'));
+// Load middlewares
+require('./api/middleware')(app);
+app.use('/', require('./api/router'));
 
 exports.start = ((argv) => {
-    let port = argv[0] || 5324
-    https.listen(port, () => {
-        console.log(`Server running! port:${port}`)
-    });
+    let port = process.env.APP_PORT || argv[0]
+    database((() => {
+        https.listen(port, () => {
+            console.log(`Server running! port:${port}`)
+        });
+    }));    
 });
