@@ -5,7 +5,7 @@ const fs = require('fs');
 const privateKey = fs.readFileSync(process.env.CERT_KEY);
 const certificate = fs.readFileSync(process.env.CERT_CERT);
 
-var credentials = { key: privateKey, cert: certificate };
+const credentials = { key: privateKey, cert: certificate, passphrase: process.env.CERT_PASS };
 
 const express = require('express');
 const app = express();
