@@ -22,3 +22,6 @@ sudo docker build -t uwaamoe/node .
 
 sudo docker run --name uwaamoe-database -v ~/database:/data/db -p 27017:27017 -d --network uwaamoe-network mongo:latest
 sudo docker run --name uwaamoe-app -p 443:5231 -d --network uwaamoe-network uwaamoe/node
+
+sudo docker connect uwaamoe-network uwaamoe-database
+sudo docker connect uwaamoe-network uwaamoe-app
