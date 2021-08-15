@@ -1,6 +1,15 @@
-FROM mongo:latest
+FROM node:latest
+LABEL name="uwaa.moe"
 LABEL version="1.0"
-EXPOSE 27017
-# RUN
 
-#docker run --name miniurl -v ~/Documents/Environment/Development/miniurl/development/database:/data/db -p 27017:27017 -d mongo:latest
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 5231
+
+CMD [ "node", "index.js" ]
