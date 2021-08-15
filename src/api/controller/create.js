@@ -11,7 +11,7 @@ module.exports = ((req, res) => {
 
         if(!result) return res.status(500).end();
 
-        let url = `http://${process.env.APP_HOSTNAME}/${result}`;
+        let url = `https://${process.env.APP_HOSTNAME}/${result}`;
         res.status(200).send({ url });
     })
     .catch((error) => {
