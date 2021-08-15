@@ -1,7 +1,8 @@
 #!/bin/bash
 sudo apt-get install update && sudo apt-get install upgrade -y
 sudo apt-get install docker -y
-directory=pwd
+
+sudo systemctl start docker
 
 sudo docker build -t uwaamoe/node .
 
