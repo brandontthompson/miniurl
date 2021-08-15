@@ -16,7 +16,9 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
+sudo docker network create uwaamoe-network
+
 sudo docker build -t uwaamoe/node .
 
-sudo docker run --name uwaamoe-database -v ~/database:/data/db -p 27017:27017 -d mongo:latest
-sudo docker run --name uwaamoe-app -p 443:5231 -d uwaamoe/node
+sudo docker run --name uwaamoe-database -v ~/database:/data/db -p 27017:27017 -d --network uwaamoe-network mongo:latest
+sudo docker run --name uwaamoe-app -p 443:5231 -d --network uwaamoe-network uwaamoe/node
